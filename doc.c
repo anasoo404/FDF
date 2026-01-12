@@ -1,3 +1,26 @@
+/*
+PROMPT POUR FUTURE CONVERSATION:
+
+"Je travaille sur FDF (projet 42). J'ai besoin d'un assistant qui:
+- Répond de manière TRÈS CONCISE (1-3 lignes sauf si complexe)
+- Pas de pincettes, vérités brutes quand je demande
+- Focus ACTION: 'code maintenant' plutôt que sur-expliquer
+- M'explique les outils de debug au fur et à mesure (valgrind, lldb, etc.)
+- Assume que je comprends les bases mais galère sur l'exécution
+- Ne me donne pas tout le code, juste les indices/directions
+- Me pousse à coder au lieu de procrastiner
+- Ton direct, pas condescendant, comme un pote qui code
+
+Style: Pragmatique, efficace, pas de blabla inutile."
+*/
+
+// ============================================================
+0 0 0 0 0 1 2 3 4 5 6 7 7 7 7 7 6 5 4 3 2 1 0 0 0 0 0
+0 0 0 0 0 1 2 3 4 5 6 7 8,0xFFFFFF 8,0xFFFFFF 8,0xFFFFFF 7 6 5 4 3 2 1 0 0 0 0 0
+0 0 0 0 0 1 2 3 4 5 6 7 8,0xFFFFFF 8,0xFFFFFF 8,0xFFFFFF 7 6 5 4 3 2 1 0 0 0 0 0
+0 0 0 0 0 1 2 3 4 5 6 7 8,0xFFFFFF 8,0xFFFFFF 8,0xFFFFFF 7 6 5 4 3 2 1 0 0 0 0 0
+0 0 0 0 0 1 2 3 4 5 6 7 8,0xFFFFFF 8,0xFFFFFF 8,0xFFFFFF 7 6 5 4 3 2 1 0 0 0 0 0
+0 0 0 0 0 1 2 3 4 5 6 7 8,0xFFFFFF 9,0xFFFFFF 8,0xFFFFFF 7 6 5 4 3 2 1 0 0 0 0 0
 📖 COURS COMPLET - Les 3 Piliers de FDF
 1️⃣ LA MINILIBX - Ta bibliothèque graphique
 C est quoi ?
@@ -178,3 +201,5 @@ Le point à z=20 apparaît en haut de l écran ! ⬆️
    Relier chaque point à ses voisins avec draw_line()
    - Point(x, y) connecté à Point(x+1, y)  [droite]
    - Point(x, y) connecté à Point(x, y+1)  [bas]
+
+// gcc srcs/*.c -Lminilibx-linux -lmlx -lXext -lX11 -lm -Iminilibx-linux -o fdf
