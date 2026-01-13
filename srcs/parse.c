@@ -6,18 +6,38 @@
 /*   By: asmaili <asmaili@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 22:18:34 by asmaili           #+#    #+#             */
-/*   Updated: 2026/01/13 00:12:53 by asmaili          ###   ########.fr       */
+/*   Updated: 2026/01/13 22:53:59 by asmaili          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
 
-void	is_format(char **line, int *erro, int *width)
+int	is_format(char **line, int *error, int *width)
 {
-	JE PREND UNE SUBSTR JUSQU A AV L ESPACE OU '\0'
-	je fais les check necessaires change error a 1 si y en a une
-	des qu une valeur est trouve
+	int	i;
+	int	start;
+
+	i = 0;
+	while ((*line)[i])
+	{
+		if (!(is_num((*line)[i++])))
+			return (*error = 1, ERROR);
+		*width += 1;
+		if ((*line)[i])
+		{
+			if ((*line)[i] == ',')
+			{
+				i += 1;
+				start = i;
+				if (!(is_hex(line + i, start, &i)))
+					return (*error = 1, ERROR);
+			}
+			else if ((*line)[i] != ' ' || !(is_num((*line)[i + 1])))
+				return (*error = 1, ERROR);
+			i += 1;
+		}
+	}
 }
 
 static int	get_width_and_height_by_parsing(t_fdf *fdf, int fd, char **line)
@@ -27,8 +47,7 @@ static int	get_width_and_height_by_parsing(t_fdf *fdf, int fd, char **line)
 
 	error = 0;
 	width = 0;
-	while (**line && !error)
-		is_format(line, &error, &width);
+	is_format(line, &error, &width);
 	if (fdf->width == 0)
 		fdf->width = width;
 	if (error || fdf->width != width || !width)
@@ -41,18 +60,28 @@ static int	get_width_and_height_by_parsing(t_fdf *fdf, int fd, char **line)
 	*line = get_next_line(fd);
 }
 
-static void	fill_map(t_point *map, int i, int width)
+static void	fill_map(t_point *fdf, int i, int width, int fd)
 {
-	int	j;
+	int		j;
+	char	*line;
 
+	line = get_next_line(fd);
 	j = 0;
-	while (j < width)
+	while (*line)
 	{
-
+		map[j]->x = j;
+		fdf->map[i][j]->z = ft_atoi(line + j);
+		while (is_num(*line + j))
+			line += 1;
+		if (*line == ',')
+		{
+			i += 1;
+		}
+		j += 1;
 	}
 }
 
-static int	create_map(t_fdf *fdf)
+static int	create_map(t_fdf *fdf, int fd)
 {
 	int	i;
 	int	j;
@@ -70,10 +99,12 @@ static int	create_map(t_fdf *fdf)
 	i = 0;
 	while (i < fdf->height)
 	{
-		fill_map(fdf->map, i, fdf->width);
+		j = 0;
+		while (j < fdf->width)
+			fdf->map[i][j++]->y = i;
+		fill_map(fdf, i, fdf->width, fd);
 		i += 1;
 	}
-	// ici je fill la map avec les donnes qu il faut
 }
 
 t_fdf	get_struct(char *av)
@@ -97,8 +128,9 @@ t_fdf	get_struct(char *av)
 	close(fd);
 	fd = open(av, O_RDONLY);
 	if (fd < 0)
-		return (fdf);
-	create_map(&fdf);
+		return (fdf.height = 0, fdf);
+	if (create_map(&fdf, fd) == ERROR)
+		return (fdf.height = 0, fdf);
 	close(fd);
 	return (fdf);
 }

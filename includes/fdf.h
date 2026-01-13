@@ -6,7 +6,7 @@
 /*   By: asmaili <asmaili@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 22:03:07 by asmaili           #+#    #+#             */
-/*   Updated: 2026/01/12 23:56:48 by asmaili          ###   ########.fr       */
+/*   Updated: 2026/01/13 22:41:39 by asmaili          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,8 @@ typedef struct s_fdf
 t_fdf	get_struct(char *av);
 /*utils*/
 void	free_map(t_fdf fdf);
+int		is_num(int c);
+int		is_hex(char *str, int start, int *index);
+int		ft_atoi_base(char *str, int base);
 
 #endif
