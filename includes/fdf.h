@@ -6,7 +6,7 @@
 /*   By: asmaili <asmaili@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 22:03:07 by asmaili           #+#    #+#             */
-/*   Updated: 2026/01/14 01:48:20 by asmaili          ###   ########.fr       */
+/*   Updated: 2026/01/14 20:26:28 by asmaili          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,17 +33,17 @@ typedef struct s_point
 typedef struct s_fdf
 {
 	t_point	**map;
-	int		col;
-	int		line;
+	int		width;
+	int		height;
 	void	*mlx;
 	void	*win;
 }	t_fdf;
 
 /*parse*/
-t_fdf	get_struct(char *av);
+t_fdf	parse_data(char *fdf);
 /*utils*/
-void	free_map(t_fdf fdf);
-int		is_hex(char *str, int start, int *index);
+void	free_split(char **split);
+void	free_map(t_point **map, int index_fail);
 int		ft_atoi_base(char *str, int base);
 
 #endif

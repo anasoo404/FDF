@@ -6,20 +6,30 @@
 /*   By: asmaili <asmaili@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 22:18:42 by asmaili           #+#    #+#             */
-/*   Updated: 2026/01/14 01:33:58 by asmaili          ###   ########.fr       */
+/*   Updated: 2026/01/14 20:02:48 by asmaili          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-void	free_map(t_fdf fdf)
+void	free_split(char **split)
 {
 	int	i;
 
 	i = 0;
-	while (i < fdf.height)
-		free(fdf.map[i++]);
-	free(fdf.map);
+	while (split[i])
+		free(split[i++]);
+	free(split);
+}
+
+void	free_map(t_point **map, int index_fail)
+{
+	int	i;
+
+	i = 0;
+	while (i <= index_fail)
+		free(map[i++]);
+	free(map);
 }
 
 int	ft_atoi_base(char *str, int base)
