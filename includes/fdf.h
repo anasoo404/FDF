@@ -6,7 +6,7 @@
 /*   By: asmaili <asmaili@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 22:03:07 by asmaili           #+#    #+#             */
-/*   Updated: 2026/01/13 22:41:39 by asmaili          ###   ########.fr       */
+/*   Updated: 2026/01/14 01:48:20 by asmaili          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include "mlx.h"
 # include "libft.h"
 # include "get_next_line.h"
+# include "ft_printf.h"
 
 typedef struct s_point
 {
@@ -31,9 +32,9 @@ typedef struct s_point
 
 typedef struct s_fdf
 {
-	t_point	**map;// Tableau 2D de points
-	int		width;// 5 (nb colonnes)
-	int		height;// 5 (nb lignes)
+	t_point	**map;
+	int		col;
+	int		line;
 	void	*mlx;
 	void	*win;
 }	t_fdf;
@@ -42,7 +43,6 @@ typedef struct s_fdf
 t_fdf	get_struct(char *av);
 /*utils*/
 void	free_map(t_fdf fdf);
-int		is_num(int c);
 int		is_hex(char *str, int start, int *index);
 int		ft_atoi_base(char *str, int base);
 

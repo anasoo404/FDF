@@ -6,7 +6,7 @@
 /*   By: asmaili <asmaili@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 22:18:42 by asmaili           #+#    #+#             */
-/*   Updated: 2026/01/13 22:47:48 by asmaili          ###   ########.fr       */
+/*   Updated: 2026/01/14 01:33:58 by asmaili          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,57 +20,6 @@ void	free_map(t_fdf fdf)
 	while (i < fdf.height)
 		free(fdf.map[i++]);
 	free(fdf.map);
-}
-
-int	is_num(int c)
-{
-	if (c < '0' || c > '9')
-		return (0);
-	return (1);
-}
-
-static void	fill_base(char *base)
-{
-	int		i;
-	char	c;
-
-	i = 0;
-	while (i < 16)
-	{
-		c = '0';
-		while (i < 10)
-			base[i++] = c++;
-		c = 'A';
-		base[i++] = c++;
-	}
-}
-
-int	is_hex(char *str, int start, int *index)
-{
-	char	base[16];
-	int		error;
-	int		i;
-
-	fill_base(base);
-	if (str[0] != '0' || (str[1] != 'x' && str[1] != 'X') || !(str[2]))
-		return (ERROR);
-	*index += 2;
-	while (str[*index])
-	{
-		error = 1;
-		i = 0;
-		while (i < 16)
-		{
-			if (str[*index] == base[i++])
-				break ;
-		}
-		if (str[*index] != base[i - 1])
-			return (ERROR);
-		*index += 1;
-		if (*index - start > 8)
-			return (ERROR);
-	}
-	return (1);
 }
 
 int	ft_atoi_base(char *str, int base)
