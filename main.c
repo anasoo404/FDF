@@ -6,7 +6,7 @@
 /*   By: asmaili <asmaili@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 22:18:48 by asmaili           #+#    #+#             */
-/*   Updated: 2026/01/15 18:16:07 by asmaili          ###   ########.fr       */
+/*   Updated: 2026/01/15 19:28:15 by asmaili          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,9 @@ static int	new_image(t_fdf *data)
 	data->ad = mlx_get_data_addr(data->img, &data->bpp, &data->s_l, &data->edn);
 	if (!data->ad)
 		return (free_map(data->map, data->height - 1), write(2, "Error\n", 6));
+	data->zoom = 1;
+	data->offset_x = WIDTH / 2;
+	data->offset_y = HEIGHT / 4;
 	return (0);
 }
 

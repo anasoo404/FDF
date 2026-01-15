@@ -6,7 +6,7 @@
 /*   By: asmaili <asmaili@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 22:18:34 by asmaili           #+#    #+#             */
-/*   Updated: 2026/01/15 18:02:13:44 by asmaili          ###   ########.fr       */
+/*   Updated: 2026/01/15 18:58:37 by asmaili          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,13 @@ static void	get_map_dimensions(int fd, t_fdf *data)
 {
 	char	**parsed_line;
 	char	*line;
-	char	*first;
 	int		count;
 
-	first = get_next_line(fd);
-	if (!first)
+	line = get_next_line(fd);
+	if (!line)
 		return ;
-	parsed_line = ft_split(first, ' ');
-	free(first);
+	parsed_line = ft_split(line, ' ');
+	free(line);
 	count = 0;
 	while (parsed_line[count])
 		free(parsed_line[count++]);
@@ -89,7 +88,7 @@ static int	fill_map(t_point **map, int width, int height, int fd)
 static t_point	**parse_map(int fd, t_fdf data)
 {
 	int		i;
-	t_point **map;
+	t_point	**map;
 
 	map = malloc(sizeof(t_point *) * data.height);
 	if (!map)

@@ -6,7 +6,7 @@
 /*   By: asmaili <asmaili@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 22:14:25 by asmaili           #+#    #+#             */
-/*   Updated: 2026/01/15 18:00:01 by asmaili          ###   ########.fr       */
+/*   Updated: 2026/01/15 18:34:55 by asmaili          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	render(t_fdf data)
 	{
 		x = 0;
 		while (x < data.width)
-			project_iso(&(data.map[y][x++]));
+			project_iso(&(data.map[y][x++]), data);
 		y += 1;
 	}
 	y = 0;

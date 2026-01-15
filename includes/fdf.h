@@ -6,7 +6,7 @@
 /*   By: asmaili <asmaili@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 22:03:07 by asmaili           #+#    #+#             */
-/*   Updated: 2026/01/15 18:16:07 by asmaili          ###   ########.fr       */
+/*   Updated: 2026/01/15 19:26:35 by asmaili          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,11 @@ typedef struct s_fdf
 	t_point	**map;
 	int		width;
 	int		height;
+	/*bonus*/
+	float	zoom;
+	int		offset_x;
+	int		offset_y;
+	/*img*/
 	void	*mlx;
 	void	*win;
 	void	*img;
@@ -67,14 +72,14 @@ void	free_map(t_point **map, int index_fail);
 int		ft_atoi_base(char *str, int base);
 
 /*projection*/
-void	project_iso(t_point *p);
+void	project_iso(t_point *p, t_fdf data);
 
 /*draw*/
 void	render(t_fdf data);
 
 /*events*/
 int		close_window(t_fdf *data);
-int		key_hook(int keycode, t_fdf *data);
+int		key_hook(int k, t_fdf *data);
 int		expose_hook(t_fdf *data);
 
 #endif
