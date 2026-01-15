@@ -6,7 +6,7 @@
 /*   By: asmaili <asmaili@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 22:18:42 by asmaili           #+#    #+#             */
-/*   Updated: 2026/01/14 23:19:04 by asmaili          ###   ########.fr       */
+/*   Updated: 2026/01/15 17:59:34 by asmaili          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	ft_atoi_base(char *str, int base)
 	i = 0;
 	if (str[0] == '0' && (str[1] == 'x' || str[1] == 'X'))
 		i = 2;
-	while (i < 8)
+	while (str[i])
 	{
 		result *= base;
 		if (str[i] >= '0' && str[i] <= '9')
@@ -54,4 +54,3 @@ int	ft_atoi_base(char *str, int base)
 	}
 	return (result);
 }
-

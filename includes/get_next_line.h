@@ -6,7 +6,7 @@
 /*   By: asmaili <asmaili@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 17:06:46 by asmaili           #+#    #+#             */
-/*   Updated: 2026/01/14 00:43:36 by asmaili          ###   ########.fr       */
+/*   Updated: 2026/01/15 16:30:45 by asmaili          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # include <unistd.h>
 
 size_t	ft_strlen(const char *str);
-char	*ft_str_range_free_stock(char *stock, int start, int end, int free_stock);
+char	*ft_str_range_f(char *stock, int start, int end, int free_stock);
 char	*ft_strjoin_bytes_read(char *stock, char *buf_read, size_t bytes_read);
 char	*get_next_line(int fd);
 

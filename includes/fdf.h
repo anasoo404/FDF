@@ -6,7 +6,7 @@
 /*   By: asmaili <asmaili@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 22:03:07 by asmaili           #+#    #+#             */
-/*   Updated: 2026/01/15 02:27:27 by asmaili          ###   ########.fr       */
+/*   Updated: 2026/01/15 18:16:07 by asmaili          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@
 
 typedef struct s_line
 {
-	int dx;
-	int dy;
-	int sx;
-	int sy;
-	int err;
+	int	dx;
+	int	dy;
+	int	sx;
+	int	sy;
+	int	err;
 }	t_line;
 
 typedef struct s_point
@@ -51,6 +51,11 @@ typedef struct s_fdf
 	int		height;
 	void	*mlx;
 	void	*win;
+	void	*img;
+	char	*ad;
+	int		bpp;
+	int		s_l;
+	int		edn;
 }	t_fdf;
 
 /*parse*/
@@ -66,5 +71,10 @@ void	project_iso(t_point *p);
 
 /*draw*/
 void	render(t_fdf data);
+
+/*events*/
+int		close_window(t_fdf *data);
+int		key_hook(int keycode, t_fdf *data);
+int		expose_hook(t_fdf *data);
 
 #endif

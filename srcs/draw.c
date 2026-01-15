@@ -6,11 +6,23 @@
 /*   By: asmaili <asmaili@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 22:14:25 by asmaili           #+#    #+#             */
-/*   Updated: 2026/01/15 02:51:33 by asmaili          ###   ########.fr       */
+/*   Updated: 2026/01/15 18:00:01 by asmaili          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
+
+static void	my_mlx_pixel_put(t_fdf *data, int x, int y, int color)
+{
+	char	*dst;
+
+	if (!data || !data->ad)
+		return ;
+	if (x < 0 || x >= WIDTH || y < 0 || y >= HEIGHT)
+		return ;
+	dst = data->ad + (y * data->s_l + x * (data->bpp / 8));
+	*(unsigned int *)dst = color;
+}
 
 static void	init_line(t_line *l, t_point p1, t_point p2)
 {
@@ -26,14 +38,15 @@ static void	init_line(t_line *l, t_point p1, t_point p2)
 		l->sy = -1;
 	l->err = l->dx - l->dy;
 }
+
 static void	draw_line(t_fdf data, t_point p1, t_point p2)
 {
-	t_line l;
+	t_line	l;
 
 	init_line(&l, p1, p2);
 	while (1)
 	{
-		mlx_pixel_put(data.mlx, data.win, p1.screen_x, p1.screen_y, p1.color);
+		my_mlx_pixel_put(&data, p1.screen_x, p1.screen_y, p1.color);
 		if (p1.screen_x == p2.screen_x && p1.screen_y == p2.screen_y)
 			break ;
 		if (l.err * 2 > -(l.dy))
