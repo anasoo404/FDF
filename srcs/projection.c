@@ -6,8 +6,14 @@
 /*   By: asmaili <asmaili@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 22:18:38 by asmaili           #+#    #+#             */
-/*   Updated: 2026/01/12 22:18:39 by asmaili          ###   ########.fr       */
+/*   Updated: 2026/01/15 02:26:55 by asmaili          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
+
+void	project_iso(t_point *p)
+{
+	p->screen_x = (p->x - p->y) * cos(0.523599) + WIDTH / 2;
+	p->screen_y = (p->x + p->y) * sin(0.523599) - p->z + HEIGHT / 4;
+}

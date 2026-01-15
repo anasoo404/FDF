@@ -1,10 +1,8 @@
+*This project has been created as part of the 42 curriculum by asmaili*
+
 # FDF - Wireframe Renderer
 
 3D wireframe visualization of height maps using isometric projection.
-
-## About
-
-This project has been created as part of the 42 curriculum by asmaili.
 
 ## Features
 
@@ -38,6 +36,8 @@ FDF/
 │   └── utils.c         # Utilities
 ├── includes/           # Headers
 │   ├── fdf.h
+|   ├── get_next_line.h
+|   ├── ft_printf.h
 │   ├── libft.h
 │   └── mlx.h
 ├── lib/                # Libraries
@@ -45,3 +45,13 @@ FDF/
 │   └── libmlx.a
 └── test_maps/          # Test files
 ```
+
+## Ressources
+
+42 Docs : https://harm-smits.github.io/42docs/libs/minilibx/getting_started.html#introduction
+
+MiniLibX : - man
+		   - man3
+
+IA : - handling project structure
+	 - advices for the begining
